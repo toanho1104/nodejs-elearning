@@ -1,38 +1,18 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Accounts', {
+    await queryInterface.createTable('Authors', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      email: {
-        type: Sequelize.STRING
-      },
-      passWord: {
-        type: Sequelize.STRING
-      },
       fullName: {
         type: Sequelize.STRING
       },
-      avatar: {
+      avatarUrl: {
         type: Sequelize.STRING
-      },
-      accountTypeID: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "AccountTypes",
-          key: "id",
-        },
-      },
-      stastusID: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "AccountStastus",
-          key: "id",
-        },
       },
       createdAt: {
         allowNull: false,
@@ -45,6 +25,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Accounts');
+    await queryInterface.dropTable('Authors');
   }
 };
