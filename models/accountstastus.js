@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   AccountStastus.init({
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'AccountStastus',

@@ -20,7 +20,7 @@ module.exports = {
       avatar: {
         type: Sequelize.STRING
       },
-      accountTypeID: {
+      TypeID: {
         type: Sequelize.INTEGER,
         references: {
           model: "AccountTypes",
