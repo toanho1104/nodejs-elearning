@@ -11,7 +11,7 @@ module.exports = {
       fullName: {
         type: Sequelize.STRING
       },
-      avatarUrl: {
+      avatar: {
         type: Sequelize.STRING
       },
       createdAt: {

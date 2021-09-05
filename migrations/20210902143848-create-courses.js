@@ -17,6 +17,9 @@ module.exports = {
       poster: {
         type: Sequelize.STRING
       },
+      video: {
+        type: Sequelize.STRING
+      },
       rating: {
         type: Sequelize.INTEGER
       },
@@ -34,13 +37,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: "Authors",
-          key: "id",
-        },
-      },
-      courseDescriptionID: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "CourseDescriptions",
           key: "id",
         },
       },
