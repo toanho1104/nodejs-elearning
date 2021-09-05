@@ -22,12 +22,12 @@ const getDetailAccount = async (req, res) => {
   const { id } = req.params
   try {
     const [accountDetail] = await sequelize.query(`
-    SELECT Ac.id , Ac.email, Ac.fullName,Ac.avatar, Act.name as type, Acs.name as status, Act.name as type, Ac.createdAt, Ac.updatedAt FROM Accounts as Ac
-    INNER JOIN AccountTypes as Act
-    ON Ac.TypeID=Act.id
-    INNER JOIN AccountStastus as Acs
-    ON Ac.stastusID=Acs.id
-    WHERE Ac.id = ${id}
+      SELECT Ac.id , Ac.email, Ac.fullName,Ac.avatar, Act.name as type, Acs.name as status, Act.name as type, Ac.createdAt, Ac.updatedAt FROM Accounts as Ac
+      INNER JOIN AccountTypes as Act
+      ON Ac.TypeID=Act.id
+      INNER JOIN AccountStastus as Acs
+      ON Ac.stastusID=Acs.id
+      WHERE Ac.id = ${id}
     `)
     if (accountDetail[0]) {
       res.status(200).send(results(true, undefined, { data: accountDetail[0] }))
@@ -100,7 +100,6 @@ const deleteAccount = async (req, res) => {
     res.status(500).send(error)
   }
 }
-
 
 module.exports = {
   getListAccounts,
