@@ -10,7 +10,7 @@ const getListAccounts = async (req, res) => {
     INNER JOIN AccountTypes as Act
     ON Ac.TypeID=Act.id
     INNER JOIN AccountStastus as Acs
-    ON Ac.stastusID=Acs.id
+    ON Ac.stastusID=Acs.id 
     WHERE Ac.id NOT LIKE ${id}
     `)
     res.status(200).send(results(true, undefined, { data: accountList }))

@@ -26,7 +26,7 @@ const getDetailCourse = async (req, res) => {
       ON c.id=cd.id
       WHERE c.id=${id}
     `)
-    const courseContent = await CourseContents.findAll()
+    const courseContent = await CourseContents.findAll({ where: { courseID: id } })
     for (let i of courseContent) {
       const videoList = await Videos.findAll({ where: { courseContentID: i.id } })
       const item = { contentDetail: i, videoList }
