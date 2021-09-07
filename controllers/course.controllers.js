@@ -57,17 +57,21 @@ const getDetailCourse = async (req, res) => {
       ON c.id=cd.id
       WHERE c.id=${id}
     `)
-    const courseContent = await CourseContents.findAll({ where: { courseID: id } })
-    for (let i of courseContent) {
-      const videoList = await Videos.findAll({ where: { courseContentID: i.id } })
-      const item = { contentDetail: i, videoList }
-      courseListContent.push(item)
+    if (courseDetail[0]) {
+      const courseContent = await CourseContents.findAll({ where: { courseID: id } })
+      for (let i of courseContent) {
+        const videoList = await Videos.findAll({ where: { courseContentID: i.id } })
+        const item = { contentDetail: i, videoList }
+        courseListContent.push(item)
+      }
+      res.status(200).send(results(true, undefined,
+        {
+          courseInfo: courseDetail,
+          courseContent: courseListContent,
+        }))
+    } else {
+      res.status(404).send(results(false, `Id ${id} Not Found`));
     }
-    res.status(200).send(results(true, undefined,
-      {
-        courseInfo: courseDetail,
-        courseContent: courseListContent,
-      }))
   } catch (error) {
     res.status(500).send(error)
   }

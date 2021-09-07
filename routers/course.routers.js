@@ -1,9 +1,9 @@
 const express = require('express')
 const { Courses } = require('../models')
-const { getListCourses, getDetailCourse } = require('../controllers/course.controlers')
+const { getListCourses, getDetailCourse } = require('../controllers/course.controllers')
 const { authenticate, authorize } = require('../middlewares/auth/verifyToken.midlewares')
 const { logFeature } = require('../middlewares/log/logFeature.middlewares')
-const { checkAccountExist } = require('../middlewares/validations/cheackExistl.middlewares')
+const { checkExist } = require('../middlewares/validations/cheackExistl.middlewares')
 
 const courseRouter = express.Router()
 
